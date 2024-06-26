@@ -1,0 +1,12 @@
+#+title: Hello, Nectarine!
+
+* Summary
+This repository answers a sample problem posted by [[https://hellonectarine.com/][Nectarine]], a company which connects you with financial advisors and offers a simplified pricing model with flat fees. It contains:
+- The [[file:Application/][solution project]], with logic for solving the problem statement and sending the application email.
+- A [[file:Application.Test/][test project]], with a few basic tests for logic correctness.
+- A [[file:.github/workflows/send.yml][GitHub actions workflow]] to invoke the tests and run the solution project to send the application.
+
+* Problem statement
+A “Bubblicious Number” is an integer that is prime and whose hexadecimal representation has a last digit of B. The first three are 11, 43 and 59. How many Bubblicious Numbers are there between one and 100,000?
+
+Our e-mail address is the answer @ Nectarine’s domain name (i.e. not the website you’re currently looking at).

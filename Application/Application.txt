@@ -1,0 +1,6 @@
+Hello, Nectarine!<br><br>
+
+There are {{ answer }} "Bubblicious Number"s between 0 and 100,000 (<a href={{ repository }}>source code for the solution [and this email!] here</a>, or <a href={{ githuburl }}>checkout my GitHub</a>). I'm {{ name }}, a software engineer and aspiring entrepreneur who is passionate about building software applications that people's lives better and easier. I'm interested in Nectarine because, similar to you, I don't believe in the percent-of-growth business model that so many financial institutions charge for helping people plan for retirement. When I'm not building AI algorithms and applications, trying to automate everything, or fiddling with my homelab and editor configurations, I'm spending time with my wife and kids or accidentally solving my problems on my midday walk with my dog. I have attached me resume to this email. I hope to hear from you.<br><br>
+
+Sincerely,<br>
+{{ name }}

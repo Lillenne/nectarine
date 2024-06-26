@@ -1,0 +1,45 @@
+name: 'Send my application'
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build-and-send:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+
+    - name: Setup .NET 📦
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: ${{ env.DOTNET_VERSION }}
+
+    - name: 'Restore'
+      run: dotnet restore
+
+    - name: 'Decrypt secret file'
+      run: gpg --output Application/Application.pdf --batch --passphrase ${{ secrets.SECRET_KEY }} --decrypt Application/Application.pdf.gpg
+
+    - name: 'Build'
+      run: dotnet build -c Release --no-restore --nologo
+
+    - name: 'Run tests'
+      run: dotnet test -c Release --no-build
+
+    - name: 'Run application'
+      run: |
+        cd Application
+        dotnet run -c Release --no-build \
+        --my-name ${{ vars.MY_NAME }} \
+        --my-address ${{ secrets.MY_EMAIL }} \
+        --smtp-server ${{ vars.SMTP_SERVER }} \
+        --port ${{ vars.SMTP_PORT }} \
+        --auth-user ${{ secrets.MY_EMAIL }} \
+        --auth-pass ${{ secrets.EMAIL_TOKEN }} \
+        --repo ${{ vars.REPO_URL }} \
+        --git-hub-url ${{ vars.GH_PROFILE }}
+
+    - name: 'Cleanup secret file'
+      run: rm Application.pdf
